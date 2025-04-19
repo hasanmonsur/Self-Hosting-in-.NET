@@ -1,0 +1,6 @@
+@AspNetCoreSelfHost_HostAddress = http://localhost:5089
+
+GET {{AspNetCoreSelfHost_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
