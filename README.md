@@ -24,12 +24,12 @@ The diagram shows the components that are present in this repository. The client
 
 ```mermaid
 flowchart LR
-    Client[HTTP client\nBrowser, curl, or API tool]
-    subgraph Host[.NET 9 application process]
-        Server[ASP.NET Core built-in web server\nhttp://localhost:9000]
-        Routes[Minimal API routes]
-        Values[GET /api/values]
-        ValueById[GET /api/values/{id}]
+    Client["HTTP client<br/>Browser, curl, or API tool"]
+    subgraph Host[".NET 9 application process"]
+        Server["ASP.NET Core built-in web server<br/>http://localhost:9000"]
+        Routes["Minimal API routes"]
+        Values["GET /api/values"]
+        ValueById["GET /api/values/id"]
         Server --> Routes
         Routes --> Values
         Routes --> ValueById
@@ -41,13 +41,13 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[1. Client sends HTTP request] --> B[2. ASP.NET Core listener\nlocalhost:9000]
-    B --> C[3. Route matching]
-    C -->|GET /api/values| D[Endpoint returns greeting]
-    C -->|GET /api/values/{id}| E[Endpoint binds integer id\nand formats response]
-    D --> F[4. HTTP response returned]
+    A["1. Client sends HTTP request"] --> B["2. ASP.NET Core listener<br/>localhost:9000"]
+    B --> C["3. Route matching"]
+    C -->|GET /api/values| D["Endpoint returns greeting"]
+    C -->|GET /api/values/id| E["Endpoint binds integer id<br/>and formats response"]
+    D --> F["4. HTTP response returned"]
     E --> F
-    F --> G[5. Client receives response]
+    F --> G["5. Client receives response"]
 ```
 
 The sample endpoints return plain text. No request data is stored or forwarded to another service.
@@ -65,7 +65,7 @@ sequenceDiagram
     Client->>Host: GET /api/values/42
     Host->>Router: Dispatch HTTP request
     Router->>Endpoint: Match route and bind id = 42
-    Endpoint-->>Router: "You requested ID: 42"
+    Endpoint-->>Router: You requested ID: 42
     Router-->>Host: HTTP response
     Host-->>Client: 200 OK with response body
 ```
